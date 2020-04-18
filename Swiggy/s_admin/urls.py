@@ -49,5 +49,13 @@ urlpatterns = [
          path('save_type/', views.save_type, name="save_type"),
          path('update_type/', views.update_type, name="update_type"),
          path('update_type_data/', views.update_type_data, name="update_type_data"),
-         path('delete_type/', views.delete_type, name="delete_type")
+         path('delete_type/', views.delete_type, name="delete_type"),
+
+        #restrant
+        path('pending/',views.pending,name="pending"),
+        path('approve/',views.approve,name="approve"),
+        path('cancel/',views.cancel,name="cancel"),
+
+       path('approved_data/',views.approved_data,name="approved_data"),
+       path('cancel_data/',views.cancel_data,name="cancel_data")
 ]

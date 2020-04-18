@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     's_admin.apps.SAdminConfig',
+    'resturant',
+    'customer'
 ]
 
 MIDDLEWARE = [

@@ -1,0 +1,42 @@
+{% extends 's_admin/common.html' %}
+
+{% block common %}
+
+{% load static %}
+    <table align="center">
+       <tr>
+           <th>
+               {% include 's_admin/c_menu.html' %}
+           </th>
+       </tr>
+       <tr>
+           <th>
+               <table align="center" border="2">
+                   <tr>
+                       <th colspan="5" style="color: antiquewhite;background-color: coral;font-family: Consolas;font-size: 30px">
+                           Cancel Resturant Details
+                       </th>
+                   </tr>
+                   <tr>
+                       <th>id</th>
+                       <th>Name</th>
+                       <th>Email</th>
+
+                   </tr>
+                   {% for x in qs %}
+                       <tr>
+                          <td>{{ x.rest_id }}</td>
+                          <td>{{ x.rest_name }}</td>
+                          <td>{{ x.rest_email }}</td>
+
+                       </tr>
+                   {% endfor %}
+
+               </table>
+           </th>
+       </tr>
+    </table>
+
+
+
+{% endblock %}

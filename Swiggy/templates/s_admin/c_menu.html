@@ -22,8 +22,15 @@
          <li class="nav-item active">
         <a class="nav-link" href="{% url 'open_type' %}">Type <span class="sr-only">(current)</span></a>
       </li>
-         <li class="nav-item active">
-        <a class="nav-link" href="#">Restaurant <span class="sr-only">(current)</span></a>
+          <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Resturant
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{% url 'approved_data' %}">Approved</a>
+          <a class="dropdown-item" href="{% url 'pending' %}">Pending</a>
+          <a class="dropdown-item" href="{% url 'cancel_data' %}">Canceled</a>
+        </div>
       </li>
 
          <li class="nav-item active">

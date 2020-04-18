@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from  s_admin.models import *
 from s_admin.forms import *
+from resturant.models import *
 from django.contrib import messages
 
 
@@ -115,12 +116,13 @@ def update_area(request):
     sno = request.GET["sno"]
     sname = request.GET["sname"]
 
-    d1 = {"sno": sno, "sname": sname}
+    d1 = {"sno": sno, "sname": sname,}
     return render(request, "s_admin/open_area.html", {"update_data": d1, "sdata": AreaModel.objects.all()})
 
 def update_area_data(request):
     sno = request.POST["s1"]
     sname = request.POST["s2"]
+
     AreaModel.objects.filter(area_no=sno).update(area_name=sname)
     return redirect('open_area')
 
@@ -148,8 +150,7 @@ def save_type(request):
 def update_type(request):
     sno = request.GET["sno"]
     sname = request.GET["sname"]
-    print(sno)
-    print(sname)
+
     d1 = {"sno": sno, "sname": sname}
     return render(request, "s_admin/open_type.html", {"update_data": d1, "sdata": RestaurantTypeModel.objects.all()})
 
@@ -165,3 +166,29 @@ def delete_type(request):
     RestaurantTypeModel.objects.filter(no=sno).delete()
     return redirect('open_type')
 
+
+def pending(request):
+    qs = ResturantModel.objects.filter(res_status="pending")
+    return render(request,"s_admin/pending.html",{"qs":qs})
+
+
+def approve(request):
+    da=request.GET["s1"]
+    ResturantModel.objects.filter(rest_id=da).update(res_status="approved")
+    return redirect("pending")
+
+
+def cancel(request):
+    da = request.GET["s1"]
+    ResturantModel.objects.filter(rest_id=da).update(res_status="canceled")
+    return redirect("pending")
+
+
+def approved_data(request):
+    qs = ResturantModel.objects.filter(res_status="approved")
+    return render(request, "s_admin/approved.html", {"qs": qs})
+
+
+def cancel_data(request):
+    qs = ResturantModel.objects.filter(res_status="canceled")
+    return render(request, "s_admin/cancel.html", {"qs": qs})

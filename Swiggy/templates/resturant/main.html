@@ -1,0 +1,12 @@
+{% extends 'resturant/common.html' %}
+
+{% block common %}
+     {% include 'resturant/c_menu.html' %}
+    <tr>
+          <th>
+              {% for x in messages %}
+                  {{ x }}
+              {% endfor %}
+          </th>
+      </tr>
+{% endblock %}
